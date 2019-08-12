@@ -35,12 +35,15 @@ abstract class OracleBase extends Driver
     protected $_baseConfig = [
         'persistent' => true,
         'host' => 'localhost',
+        'port' => '1521',
         'username' => 'root',
         'password' => '',
         'database' => 'cake',
-        'port' => '1521',
+        'sid' => '',
+        'instance' => '',
+        'pooled' => '',
         'flags' => [],
-        'encoding' => 'utf8',
+        'encoding' => '',
         'case' => 'lower',
         'timezone' => null,
         'init' => [],
@@ -62,14 +65,6 @@ abstract class OracleBase extends Driver
         $config = $this->_config;
 
         $config['init'][] = "ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS' NLS_TIMESTAMP_FORMAT='YYYY-MM-DD HH24:MI:SS' NLS_TIMESTAMP_TZ_FORMAT='YYYY-MM-DD HH24:MI:SS'";
-
-        $config['flags'] += [
-            // PDO::ATTR_CASE => PDO::CASE_LOWER, // @todo move to config setting
-            PDO::NULL_EMPTY_STRING => true,
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_PERSISTENT => empty($config['persistent']) ? false : $config['persistent'],
-            PDO::ATTR_ORACLE_NULLS => true,
-        ];
 
         $dsn = $this->getDSN();
         $this->_connect($dsn, $config);

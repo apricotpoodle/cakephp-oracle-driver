@@ -25,6 +25,11 @@ class OracleOCI extends OracleBase
      */
     protected function _connect($dsn, array $config)
     {
+        $config['flags'] += [
+            'charset' => empty($config['encoding']) ? null : $config['encoding'],
+            'persistent' => empty($config['persistent']) ? false : $config['persistent'],
+        ];
+
         $connection = new OCI8Connection($dsn, $config['username'], $config['password'], $config['flags']);
         $this->connection($connection);
         return true;
