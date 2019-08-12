@@ -44,6 +44,7 @@ abstract class OracleBase extends Driver
         'case' => 'lower',
         'timezone' => null,
         'init' => [],
+        'cacheMetadata' => true,
     ];
 
     protected $_defaultConfig = [];

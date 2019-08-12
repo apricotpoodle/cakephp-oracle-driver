@@ -56,6 +56,7 @@ return [
             'sid' => '',                    # Database System ID (maps to Oracle's `SID`)
             'instance' => '',               # Database instance name (maps to Oracle's `INSTANCE_NAME`)
             'pooled' => '',                 # Database pooling (maps to Oracle's `SERVER=POOLED`)
+            'cacheMetadata' => true,        # Database Metadata Caching (default Enable)
         ]
     ]
 ];
