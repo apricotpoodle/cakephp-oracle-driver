@@ -71,7 +71,7 @@ abstract class OracleBase extends Driver
 
         if (!empty($config['init'])) {
             foreach ((array)$config['init'] as $command) {
-                $this->connection()
+                $this->getConnection()
                      ->exec($command);
             }
         }
