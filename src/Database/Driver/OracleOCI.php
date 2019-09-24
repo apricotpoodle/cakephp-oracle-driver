@@ -31,7 +31,7 @@ class OracleOCI extends OracleBase
         ];
 
         $connection = new OCI8Connection($dsn, $config['username'], $config['password'], $config['flags']);
-        $this->connection($connection);
+        $this->setConnection($connection);
         return true;
 
     }
