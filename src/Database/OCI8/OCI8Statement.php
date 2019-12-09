@@ -189,7 +189,11 @@ class OCI8Statement extends \PDOStatement implements \IteratorAggregate
      */
     public function closeCursor()
     {
-        return true;
+        // JUB 21/11/2019
+        if (is_resource($this->_sth)) {
+            oci_free_cursor($this->_sth);
+        }
+        //return true;
     }
 
     public function __destruct()
@@ -443,7 +447,10 @@ class OCI8Statement extends \PDOStatement implements \IteratorAggregate
      */
     public function rowCount()
     {
-        return oci_num_rows($this->_sth);
+        // JUB 29/11/2019
+        if(is_resource($this->_sth)){
+            return oci_num_rows($this->_sth);
+        }
     }
 
     /**
