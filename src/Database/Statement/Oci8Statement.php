@@ -21,10 +21,13 @@ class Oci8Statement extends Statement
      */
     public function closeCursor()
     {
-        if (empty($this->_sth)) {
+        // FMB 21/11/2019
+        $this->_sth->closeCursor();
+        /*if (empty($this->_sth)) {
             return true;
         }
-        return true;
+        return true;*/
+
     }
 
     /**
